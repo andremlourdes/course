@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.OnDelete;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -48,6 +49,8 @@ public class CourseModel implements Serializable {
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+    //@OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @Fetch(FetchMode.SUBSELECT)
+    //@OnDelete(action = OnDeleteAction.CASCADE)
     private Set<ModuleModel> modules;
 }
