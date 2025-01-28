@@ -34,7 +34,7 @@ public class CourseModel implements Serializable {
     private String imgUrl;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
     @Column(nullable = false)
-    private LocalDateTime createtiondAt;
+    private LocalDateTime creationdAt;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
     @Column(nullable = false)
     private LocalDateTime lastUpdatedAt;
