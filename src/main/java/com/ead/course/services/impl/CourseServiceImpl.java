@@ -11,6 +11,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -42,6 +44,8 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public CourseModel save(CourseModel courseModel) {
+        courseModel.setCreationAt(LocalDateTime.now(ZoneId.of("UTC")));
+        courseModel.setLastUpdatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         courseRepository.save(courseModel);
         return courseModel;
     }

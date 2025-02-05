@@ -20,4 +20,4 @@ spring:
     level:
       org:
         springframework:
-          boot=DEBUG: DEBUG
+          boot=DEBUG: DEBUG 

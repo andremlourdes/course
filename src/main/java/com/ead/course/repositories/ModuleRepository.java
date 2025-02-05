@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ModuleRepository extends JpaRepository<ModuleModel, UUID> {
-    
+
     @Query(value = "select * from tb_modules where course_course_id = :courseId",nativeQuery = true)
     List<ModuleModel> findAllModulesIntoCourse(@Param("courseId") UUID courseId);
 
@@ -19,6 +19,6 @@ public interface ModuleRepository extends JpaRepository<ModuleModel, UUID> {
     Optional<ModuleModel> findModuleIntoCourse(UUID moduleId, UUID courseId);
 
     /*  Simula que curso está com fetchtype EAGER , trará o curso, carregará todos os atributos normais de modulo e também curso.
-       @EntityGraph(attributePaths = {"course"}) Passa o atributo lazye que deseja que venha como eagger
+       @Enti tyGraph(attributePaths = {"course"}) Passa o atributo lazye que deseja que venha como eagger
        ModuleModel findByTitle(String title);*/
 }

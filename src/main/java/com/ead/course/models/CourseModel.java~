@@ -12,6 +12,7 @@ import org.hibernate.annotations.FetchMode;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Set;
 import java.util.UUID;
 
@@ -33,7 +34,7 @@ public class CourseModel implements Serializable {
     private String imgUrl;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
     @Column(nullable = false)
-    private LocalDateTime creationAt;
+    private LocalDateTime setCreationAt
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
     @Column(nullable = false)
     private LocalDateTime lastUpdatedAt;

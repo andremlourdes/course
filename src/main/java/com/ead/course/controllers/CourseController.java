@@ -21,18 +21,19 @@ import java.util.UUID;
 /**
  * Controller for managing courses.
  */
-   @RestController
-   @RequestMapping("/courses")
-   @CrossOrigin(origins = "*", maxAge = 3600)
-    public class CourseController {
+@RestController
+@RequestMapping("/courses")
+@CrossOrigin(origins = "*", maxAge = 3600)
+public class CourseController {
     @Autowired
     private CourseService courseService;
 
     @PostMapping
     public ResponseEntity<Object> saveCourse(@RequestBody @Valid CourseDto courseDto){
-        var courseModel = new CourseModel();
+          var courseModel = new CourseModel();
         BeanUtils.copyProperties(courseDto, courseModel);
-        courseModel.setCreationdAt(LocalDateTime.now(ZoneId.of("UTC")));
+        courseModel.setCourseStatus(CourseStatus.valueOf(courseDto.getCourseStatus()));
+        courseModel.setCreationAt(LocalDateTime.now(ZoneId.of("UTC")));
         courseModel.setLastUpdatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(courseService.save(courseModel));
     }
