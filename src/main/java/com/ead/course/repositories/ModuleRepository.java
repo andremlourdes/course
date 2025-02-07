@@ -16,6 +16,8 @@ public interface ModuleRepository extends JpaRepository<ModuleModel, UUID> {
     List<ModuleModel> findAllModulesIntoCourse(@Param("courseId") UUID courseId);
 
     @Query(value = "select * from tb_modules where module_id = :moduleId and course_course_id = :courseId and module_id = : moduleId",nativeQuery = true)
+    Optional<ModuleModel> findLessonIntoModule(UUID moduleId, UUID courseId);
+
     Optional<ModuleModel> findModuleIntoCourse(UUID moduleId, UUID courseId);
 
     /*  Simula que curso está com fetchtype EAGER , trará o curso, carregará todos os atributos normais de modulo e também curso.
